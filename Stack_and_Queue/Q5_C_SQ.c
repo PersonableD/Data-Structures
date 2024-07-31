@@ -109,7 +109,14 @@ int main()
 
 void recursiveReverse(Queue *q)
 {
-/* add your code here */
+	int temp;
+	if((q->ll).head ==NULL){
+		return;
+	}
+	//temp 값이 덮어씌워지는 개념이 아니라!!(중요) 각각 스택마다 같은 이름의 temp 값이 있는거임~!
+	temp = dequeue(q);
+	recursiveReverse(q);
+	enqueue(q, temp);
 }
 
 //////////////////////////////////////////////////////////////////

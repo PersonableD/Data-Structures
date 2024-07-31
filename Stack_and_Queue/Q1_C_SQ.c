@@ -89,6 +89,8 @@ int main()
 			createQueueFromLinkedList(&ll, &q); // You need to code this function
 			printf("The resulting queue is: ");
 			printList(&(q.ll));
+			removeAllItemsFromQueue(&q);
+			removeAllItems(&ll);
 			break;
 		case 3:
 			removeOddValues(&q); // You need to code this function
@@ -116,7 +118,17 @@ int main()
 
 void createQueueFromLinkedList(LinkedList *ll, Queue *q)
 {
-	/* add your code here */
+	ListNode *cur;
+	cur = ll->head;
+	if(cur==NULL){
+		return;
+	}
+	while (cur!=NULL)
+	{
+		enqueue(q, cur->item);
+		cur = cur->next;
+	}
+	
 }
 
 void removeOddValues(Queue *q)

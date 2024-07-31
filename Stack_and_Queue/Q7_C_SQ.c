@@ -103,8 +103,50 @@ int main()
 
 ////////////////////////////////////////////////////////////
 int balanced(char *expression)
-{
-/* add your code here */
+{	
+	Stack s;
+	s.ll.head = NULL;
+	s.ll.size = 0;
+	int length = 0;
+	//문자열이 비어있거나 1개뿐이라면 함수실행x
+	if(expression == NULL || *(expression+1)=='\0'){
+		return 1;
+	}
+	while(*expression!='\0'){
+		//문자열을 돌며 먼저 (,[,{ 인 것을 찾아 스택에 넣는다.
+		if(*expression=='(' || *expression=='[' ||  *expression=='{' ){
+			push(&s, *expression);
+		}
+		else{
+			//스택에 제일 마지막으로 들어간 문자부터 확인
+			//마지막으로 들어간 문자의 종류 별로 확인
+			//확인 후 expression 짝이 맞으면 스택 마지막 값 팝
+			if(peek(&s)=='('){
+				if (*expression==')'){
+					pop(&s);
+				}
+			}
+			else if(peek(&s)=='[')
+			{
+				if (*expression==']'){
+					pop(&s);
+				}
+			}
+			else if(peek(&s)=='{')
+			{
+				if (*expression=='}'){
+					pop(&s);
+				}
+			}
+			break;
+		}
+		expression++;
+	}
+	if(isEmptyStack(&s))
+	{
+		return 0;
+	}
+	return 1;
 }
 
 ////////////////////////////////////////////////////////////

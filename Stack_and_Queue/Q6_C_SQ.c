@@ -111,7 +111,23 @@ int main()
 
 void removeUntil(Stack *s, int value)
 {
-/* add your code here */
+	//스택이비어있으면실행x
+	if(s->ll.size==0){
+		return;
+	}
+	//value값이 나올 때 까지 스택 값 지우는 함수
+	while (0 < s->ll.size)
+	{
+		if(s->ll.head->item != value){
+			pop(s);
+		}
+		else
+		{
+		 break;
+		 }
+		
+	}
+	
 }
 
 //////////////////////////////////////////////////////////////////////////////////

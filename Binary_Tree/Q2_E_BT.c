@@ -95,19 +95,35 @@ int main()
 //////////////////////////////////////////////////////////////////////////////////
 
 int maxHeight(BTNode *node)
-
 {
-    /* add your code here */
+   
+    if(node==NULL)
+    {
+        return -1;
+    }
+    else{
+        
+        if(maxHeight(node->left)<= maxHeight(node->right))
+        {
+            return maxHeight(node->right) + 1;
+        }
+        else
+        {
+            return maxHeight(node->left) + 1;
+        }
+    }
+
 }
 
-///////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////
 
-BTNode *createBTNode(int item){
-    BTNode *newNode = malloc(sizeof(BTNode));
-    newNode->item = item;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
+    BTNode *createBTNode(int item)
+    {
+        BTNode *newNode = malloc(sizeof(BTNode));
+        newNode->item = item;
+        newNode->left = NULL;
+        newNode->right = NULL;
+        return newNode;
 }
 
 

@@ -102,7 +102,26 @@ int main()
 
 void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList)
 {
-	/* add your code here */
+	ListNode *cur;
+	cur = ll->head;
+    //홀수일 때 앞 리스트가 1개 더 많도록
+	if(ll==NULL || cur==NULL){
+		return;
+	}
+	int ll_size = ll->size;
+    int frontSize = (ll_size + 1) / 2;
+    int i = 0;
+	while(cur!=NULL){
+        if(i<frontSize){
+            insertNode(resultFrontList, i, cur->item);
+        }
+        else{
+            insertNode(resultBackList, i-frontSize, cur->item);
+        }
+        cur = cur->next;
+        i++;
+    }
+	removeAllItems(ll);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

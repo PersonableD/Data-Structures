@@ -86,7 +86,33 @@ int main()
 
 void moveEvenItemsToBack(LinkedList *ll)
 {
-	/* add your code here */
+	LinkedList ll2;
+	ll2.head = NULL;
+	ll2.size = 0;
+	ListNode *cur, *a;
+	cur = ll->head;
+	int k=0;
+	while(cur!=NULL){
+		if (cur->item % 2 == 0)
+		{
+			ll->size;
+			insertNode(&ll2, ll2.size, cur->item);
+			cur = cur->next;
+			removeNode(ll, k);
+		}
+		else{
+		//남은 짝수에 초점을 맞춰야함!!!
+		cur = cur->next;
+		k++;
+		}
+	}
+	//이 부분 왜 캐스팅 다시 해줘야하는 지 이해하기
+	a =(ListNode*)ll2.head;
+	while(a!=NULL){
+		insertNode(ll, ll->size, a->item);
+		a = a->next;
+		removeNode(&ll2, 0);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
